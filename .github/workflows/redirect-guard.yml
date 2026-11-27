@@ -1,0 +1,27 @@
+name: Migration redirect guard
+on:
+  workflow_dispatch:
+  push:
+    paths: ['audit.js', 'cli.js', 'test.js', 'checks.json', '.github/workflows/redirect-guard.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify auditor
+        run: node --test test.js
+      - name: Verify live destination assertions
+        run: node cli.js checks.json --fail > redirect-report.json
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: redirect-report
+          path: redirect-report.json
+          retention-days: 3

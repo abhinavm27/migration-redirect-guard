@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { audit,publicIP,validateURL,validateInput } from './audit.js';
+test('relative redirect matches expected destination',async()=>{const r=await audit({url:'https://example.com/a',expectedUrl:'https://example.com/b'},async u=>u.endsWith('/a')?{status:301,location:'/b'}:{status:200});assert.equal(r.verdict,'pass');assert.equal(r.redirects.length,1);});
+test('wrong destination fails',async()=>assert.equal((await audit({url:'https://example.com/',expectedUrl:'https://example.com/new'},async()=>({status:200}))).verdict,'wrong_destination'));
+test('blocked is distinct from broken',async()=>assert.equal((await audit({url:'https://example.com/'},async()=>({status:403}))).verdict,'blocked'));
+test('loop is bounded',async()=>assert.equal((await audit({url:'https://example.com/'},async()=>({status:301,location:'/'}))).verdict,'redirect_loop'));
+test('private addresses and IPv6 excluded',()=>{for(const ip of ['127.0.0.1','10.0.0.1','192.168.0.1','169.254.169.254','100.64.0.1','::1','::ffff:127.0.0.1'])assert.equal(publicIP(ip),false);assert.equal(publicIP('93.184.216.34'),true);});
+test('unsafe schemes credentials ports rejected',()=>{for(const u of ['file:///etc/passwd','https://u:p@example.com/','http://example.com:8888/'])assert.throws(()=>validateURL(u));});
+test('bounded input',()=>{assert.throws(()=>validateInput({checks:[]}));assert.throws(()=>validateInput({checks:Array(101).fill({url:'https://example.com'})}));});
+test('network error is explicit',async()=>assert.equal((await audit({url:'https://example.com/'},async()=>{throw Error('timeout')})).error,'timeout'));
+test('redirect into unsafe scheme rejected',async()=>assert.equal((await audit({url:'https://example.com/'},async()=>({status:302,location:'file:///etc/passwd'}))).verdict,'error'));
