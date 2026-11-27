@@ -35,11 +35,22 @@ Results include the input and expected URLs, final URL, status, full redirect pa
 - GET with a one-byte Range request; body is closed as soon as headers arrive. Some servers return 206 or ignore Range. Either successful 2xx passes. HTML content, JavaScript redirects and canonical tags are not inspected.
 - This does not measure indexing, rankings, accessibility, page rendering or uptime over time. Report files contain submitted URLs; avoid secret query strings.
 
-## Optional $39 setup service — inquiry only
+## Optional US$39 setup service
 
 Small Batch Digital can configure one redirect guard workflow in one customer-owned GitHub repository using up to 50 URL mappings you supply. Includes one test run, a results explanation and one correction to the workflow within seven days of delivery. We work through a pull request; no account passwords are needed. Does not include changing your website's redirects, SEO consulting, ongoing monitoring or guaranteed site availability.
 
-Email **smallbatchdigital-27@agentmail.to** with subject **Redirect Guard setup** and your desired scope. This is an inquiry, not a checkout. Availability, repository access, delivery date and a usable payment method must be confirmed before work starts or payment is requested. No payment processor is connected to this repository.
+Email **smallbatchdigital-27@agentmail.to** with subject **Redirect Guard setup**, your repository, up to 50 URL mappings, authorization and desired delivery date. Repository access, complete inputs, scope and delivery date must be agreed before payment. Customer reviews and merges the pull request. This is AI-assisted configuration assistance.
+
+## Payment and support
+
+Payment is available by individual PayPal invoice after scope approval. Email **smallbatchdigital-27@agentmail.to** before paying. We must accept complete inputs and authorization, confirm capacity and agree the total price and delivery date in writing. Do not send passwords, card details, private data or tokens.
+
+[Initial pilot slot: single-order US$39 setup invoice](https://www.paypal.com/invoice/p/#E8X7FW7Y49ATHYGZ). **This invoice is reserved for the first customer we explicitly confirm by email. Pay only after we confirm that this exact invoice is assigned to your accepted order.** It is not a reusable checkout or an open reservation. After it is paid, we will remove this public invoice link; every subsequent accepted customer receives a fresh individual invoice.
+
+Quantity one; one-time payment; no subscription or automatic renewal. Maximum two active service orders across our services. Delivery is to your agreed contact email. Inbox, invoices and capacity are reviewed manually, not continuously. Public checkout rendering was checked, but no test charge or refund was executed; payment acceptance depends on PayPal and the customer's payment method.
+
+If we decline an order after payment or cannot deliver the agreed scope/date and you decline a revised date, we will request a full refund through the original payment method. Refund execution has not yet been tested; processor availability and processing times apply. Contact **smallbatchdigital-27@agentmail.to** for intake, delivery questions or refund requests. This does not limit applicable customer rights. Seller: Small Batch Digital, an unincorporated venture.
+
 
 ## License
 
